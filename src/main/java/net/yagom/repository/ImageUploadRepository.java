@@ -8,5 +8,5 @@ import java.util.List;
 public interface ImageUploadRepository extends JpaRepository<ImageItem, Long> {
     List<ImageItem> findByUserId(Long userId);
     void delete(Long id);
-    ImageItem findByIdAndUserId(Long id, Long userId);
+    ImageItem findById(Long id);
 }

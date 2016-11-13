@@ -9,6 +9,7 @@ import java.util.List;
 
 @Service
 public class ImageUploadServiceImpl implements ImageUploadService {
+
     @Autowired
     ImageUploadRepository imageUploadRepository;
 
@@ -18,18 +19,21 @@ public class ImageUploadServiceImpl implements ImageUploadService {
     }
 
     @Override
-    public Long deleteByIdAndUserId(Long imageId, Long userId) {
-        ImageItem item = imageUploadRepository.findByIdAndUserId(imageId, userId);
-        if(item != null && item.getUserId() == userId) {
+    public Long deleteById(Long imageId) {
+        ImageItem imageItem = imageUploadRepository.findById(imageId);
+        if(imageItem != null) {
             imageUploadRepository.delete(imageId);
-            return imageId;
-        } else {
-            return null;
         }
+        return imageItem.getId();
     }
 
     @Override
     public ImageItem saveAndFlush(ImageItem imageItem) {
         return imageUploadRepository.saveAndFlush(imageItem);
+    }
+
+    @Override
+    public ImageItem findById(Long imageId) {
+        return imageUploadRepository.findById(imageId);
     }
 }

@@ -65,15 +65,23 @@ public class ApiController {
         final String mid = "DELETE_IMAGE";
         DataResponse response = new DataResponse(mid);
         try {
-            Long deletedItemId = imageUploadService.deleteByIdAndUserId(id, userId);
-            if(deletedItemId != null) {
-                response.setData(String.valueOf(deletedItemId));
-                response.setResult(BaseResponse.SUCCESS);
+            ImageItem imageItem = imageUploadService.findById(id);
+            if(imageItem != null) {
+                if(imageItem.getUserId().equals(userId)) {
+                    imageUploadService.deleteById(id);
+                    response.setData(String.valueOf(imageItem.getId()));
+                    response.setResult(BaseResponse.SUCCESS);
+                } else {
+                    response.setResult(BaseResponse.UNAUTHORIZED);
+                    response.setMessage("요청하신 이미지에 대한 권한이 없습니다.");
+                }
             } else {
-                response.setResult(BaseResponse.UNAUTHORIZED);
+                response.setResult(BaseResponse.FAILURE);
+                response.setMessage("요청하신 이미지가 존재하지 않습니다.");
             }
         } catch(Exception e) {
             response.setResult(BaseResponse.FAILURE);
+            response.setMessage(e.getMessage());
         }
 
         return response;

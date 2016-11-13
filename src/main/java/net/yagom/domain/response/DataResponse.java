@@ -1,5 +1,8 @@
 package net.yagom.domain.response;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class DataResponse<T> extends BaseResponse {
 
     public DataResponse(String mid) {

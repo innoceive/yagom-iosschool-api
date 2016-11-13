@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ImageUploadService {
     List<ImageItem> findByUserId(Long userId);
-    Long deleteByIdAndUserId(Long imageId, Long userId);
+    Long deleteById(Long imageId);
     ImageItem saveAndFlush(ImageItem imageItem);
-
+    ImageItem findById(Long imageId);
 }
