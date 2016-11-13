@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="ko">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+<title>파일업로드테스트</title>
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css.map"/>
+<link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css"/>
+<link rel="stylesheet" href="/css/one-page-wonder.css"/>
+<link rel="stylesheet" href="/css/main.css"/>
+<link rel="stylesheet" href="/css/media.css"/>
+</head>
+<body>
+<div class="container container-fluid">
+
+    <form action="/api/upload" name="upload-form" enctype="multipart/form-data" method="post">
+        <input type="text" name="user_id" value="1" placeholder="아이디 입력(숫자)"/>
+        <input type="text" name="title" value="" placeholder="파일 이름을 입력해주세요."/>
+        <input type="file" name="image_data"/>
+        <button type="submit">업로드</button>
+    </form>
+
+</div>
+<script type="text/javascript" src="/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="/js/moment-with-locales.min.js"></script>
+</body>
+</html>
